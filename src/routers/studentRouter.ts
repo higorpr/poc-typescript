@@ -16,7 +16,7 @@ import {
 export const studentRouter = Router();
 
 studentRouter.get(
-	"/student/",
+	"/student",
 	validateCpf,
 	checkIfEnrolledStudent,
 	getStudentByCpf
