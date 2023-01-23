@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx tsc nodemon src/app.ts"
+    "dev": "npx tsc nodemon src/app.ts",
+    "build":"tsc"
   },
   "keywords": [],
   "author": "",
