@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { Student } from "../protocols/student";
 import {
+	deleteStudent,
 	getStudentInfoByCpf,
 	insertStudent,
 	updateStudent,
@@ -19,7 +20,7 @@ export async function postStudent(req: Request, res: Response) {
 }
 
 export async function getStudentByCpf(req: Request, res: Response) {
-	const cpf: string = res.locals.cpf;
+	const cpf: string = res.locals.cpf as string;
 
 	try {
 		const studentData = (await getStudentInfoByCpf(cpf)).rows[0];
@@ -44,4 +45,16 @@ export async function updateStudentInfo(req: Request, res: Response) {
 	}
 
 	res.sendStatus(200);
+}
+
+export async function deleteStudentInfo(req: Request, res: Response) {
+	const cpf: string = res.locals.cpf as string;
+
+	try {
+		deleteStudent(cpf);
+	} catch (err) {
+		console.log(err);
+		return res.sendStatus(500);
+	}
+    res.sendStatus(200)
 }

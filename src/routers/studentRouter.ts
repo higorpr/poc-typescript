@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {
+	deleteStudentInfo,
 	getStudentByCpf,
 	postStudent,
 	updateStudentInfo,
@@ -28,4 +29,9 @@ studentRouter.put(
 	checkIfEnrolledStudent,
 	updateStudentInfo
 );
-studentRouter.delete("/student/:cpf");
+studentRouter.delete(
+	"/student/:cpf",
+	validateCpf,
+	checkIfEnrolledStudent,
+	deleteStudentInfo
+);
